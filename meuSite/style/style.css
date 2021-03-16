@@ -40,7 +40,7 @@ li a.ativo {
 }
 
 li a:hover:not(.ativo) {
-    background-color: #260041;
+    background-color: #c69edf;
     color: white;
 }
 
@@ -86,4 +86,10 @@ li a:hover:not(.ativo) {
 input
 {
     margin-bottom: 1.5vh;
+}
+
+hr
+{
+    border-top-color: #c3a8d6;
+    border-bottom-color: #f7ecff;
 }
