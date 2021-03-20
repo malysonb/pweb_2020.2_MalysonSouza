@@ -24,27 +24,27 @@
         <li><a href="contato.html">Mande um e-mail</a></li>
     </ul>
     <div class="conteudo">
-        <h1>Editar Pessoa</h1>
+        <h1>Editar pessoa:</h1>
         <div class="alinhamento">
             <form action="sucesso.html" class="formulario">
-                <label for="Nome">Nome Completo: </label>
-                <input type="text" name="Nome" id="Nome"><br>
-                <label for="Nascimento">Data de Nascimento: </label>
-                <input type="date" name="Nascimento" id="Nascimento"><br>
-                <label for="Email">E-mail: </label>
-                <input type="email" name="Email" id="Email"><br>
-                <p style="font-size: 2.5vh; margin: 0vh;">Sexo:</p>
-                <input type="radio" name="Sexo" id="Masculino">
+                <label for="Nome">* Nome Completo: </label>
+                <input type="text" name="Nome" id="Nome" placeholder="Seu nome completo" required><br>
+                <label for="Nascimento">* Data de Nascimento: </label>
+                <input type="date" name="Nascimento" id="Nascimento" required><br>
+                <label for="Email">* E-mail: </label>
+                <input type="email" name="Email" id="Email" placeholder="teste@exemplo.com" required><br>
+                <p style="font-size: 2.5vh; margin: 0vh;">* Sexo:</p>
+                <input type="radio" name="Sexo" id="Masculino" required>
                 <label for="Masculino">Masculino</label><br>
-                <input type="radio" name="Sexo" id="Feminino">
+                <input type="radio" name="Sexo" id="Feminino" required>
                 <label for="Feminino">Feminino</label><br>
-                <input type="radio" name="Sexo" id="Não informar">
+                <input type="radio" name="Sexo" id="Não informar" required>
                 <label for="Não informar">Não informar</label><br>
                 <input type="submit" value="Enviar" class="botao">
                 <input type="reset" value="Limpar" class="botao">
             </form>
+            <p>* obrigatório</p>
         </div>
-    </div>
     </div>
 </body>
 

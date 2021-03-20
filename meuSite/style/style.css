@@ -8,7 +8,7 @@ body
 img
 {
     display: block;
-    max-height: 50vh;
+    max-height: 20vw;
     border-style: solid;
     border-width: 5px;
     border-color: #5f0096;
@@ -63,12 +63,12 @@ li a:hover:not(.ativo) {
 
 .alinhamento
 {
-    margin-left: 6vh
+    margin-left: 3vw
 }
 
-.conteudo p
+.conteudo p, label
 {
-    font-size: 3vh;
+    font-size: 2.5vh;
     color: #220038
 }
 
@@ -81,6 +81,7 @@ li a:hover:not(.ativo) {
     padding-left: 2vh;
     padding-right: 2vh;
     margin-right: 5px;
+    font-size: 2.5vh;
 }
 
 input
@@ -92,4 +93,16 @@ hr
 {
     border-top-color: #c3a8d6;
     border-bottom-color: #f7ecff;
+}
+
+table
+{
+    border-collapse: collapse;
+    border-width: 1px;
+    border-style: solid;
+}
+td, th
+{
+    border-width: 1px;
+    border-style: solid;
 }
