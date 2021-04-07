@@ -26,21 +26,21 @@
     <div class="conteudo">
         <h1>Editar pessoa:</h1>
         <div class="alinhamento">
-            <form action="sucesso.html" class="formulario">
+            <form th:action="@{/editar/{id}(id=${pessoa.id})}" th:object="${pessoa}" method="POST" class="formulario">
                 <label for="Nome">* Nome Completo: </label>
-                <input type="text" name="Nome" id="Nome" placeholder="Seu nome completo" required><br>
+                <input type="text" name="Nome" id="Nome" placeholder="Seu nome completo" th:field=*{nome} required><br>
                 <label for="Nascimento">* Data de Nascimento: </label>
-                <input type="date" name="Nascimento" id="Nascimento" required><br>
+                <input type="date" name="Nascimento" id="Nascimento" th:field=*{dataNascimento} required><br>
                 <label for="Email">* E-mail: </label>
-                <input type="email" name="Email" id="Email" placeholder="teste@exemplo.com" required><br>
+                <input type="email" name="Email" id="Email" placeholder="exemplo@exemplo.com" th:field=*{email} required><br>
                 <p style="font-size: 2.5vh; margin: 0vh;">* Sexo:</p>
-                <input type="radio" name="Sexo" id="Masculino" required>
+                <input type="radio" name="Sexo" id="Masculino" value="Masculino"  th:field=*{genero} required>
                 <label for="Masculino">Masculino</label><br>
-                <input type="radio" name="Sexo" id="Feminino" required>
+                <input type="radio" name="Sexo" id="Feminino" value="Feminino" th:field=*{genero} required>
                 <label for="Feminino">Feminino</label><br>
-                <input type="radio" name="Sexo" id="Não informar" required>
+                <input type="radio" name="Sexo" id="Não informar" value="Não informar" th:field=*{genero} required>
                 <label for="Não informar">Não informar</label><br>
-                <input type="submit" value="Enviar" class="botao">
+                <input type="submit" value="Editar" class="botao">
                 <input type="reset" value="Limpar" class="botao">
             </form>
             <p>* obrigatório</p>
