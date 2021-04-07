@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="Autor" content="Malyson Souza">
+    <meta name="Codigo Secreto" content="1777919141">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+    <title>pweb_2020.2_MalysonSouza</title>
+</head>
+
+<body>
+    <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <hr>
+        <li><a href="noticias.html">Canais de noticias</a></li>
+        <hr>
+        <li><a class="ativo" href="#">Adicionar Pessoa</a></li>
+        <li><a href="listar.html">Listar Pessoas</a></li>
+        <hr>
+        <li><a href="sobre.html">Sobre o site</a></li>
+        <li><a href="contato.html">Mande um e-mail</a></li>
+    </ul>
+    <div class="conteudo">
+        <h1>Formulario de cadastro:</h1>
+        <div class="alinhamento">
+            <form action="sucesso.html" class="formulario">
+                <label for="Nome">* Nome Completo: </label>
+                <input type="text" name="Nome" id="Nome" placeholder="Seu nome completo" required><br>
+                <label for="Nascimento">* Data de Nascimento: </label>
+                <input type="date" name="Nascimento" id="Nascimento" required><br>
+                <label for="Email">* E-mail: </label>
+                <input type="email" name="Email" id="Email" placeholder="exemplo@exemplo.com" required><br>
+                <p style="font-size: 2.5vh; margin: 0vh;">* Sexo:</p>
+                <input type="radio" name="Sexo" id="Masculino" required>
+                <label for="Masculino">Masculino</label><br>
+                <input type="radio" name="Sexo" id="Feminino" required>
+                <label for="Feminino">Feminino</label><br>
+                <input type="radio" name="Sexo" id="Não informar" required>
+                <label for="Não informar">Não informar</label><br>
+                <input type="submit" value="Enviar" class="botao">
+                <input type="reset" value="Limpar" class="botao">
+            </form>
+            <p>* obrigatório</p>
+        </div>
+    </div>
+</body>
+
+</html>

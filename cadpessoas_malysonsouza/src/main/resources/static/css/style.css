@@ -1,0 +1,108 @@
+body
+{
+    margin: 0;
+    background-color: #fcf7ff;
+    font-family: sans-serif;
+}
+
+img
+{
+    display: block;
+    max-height: 20vw;
+    border-style: solid;
+    border-width: 5px;
+    border-color: #5f0096;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 25%;
+    background-color: #f1dcff;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+li a.ativo {
+    background-color: #4B0082;
+    color: white;
+}
+
+li a:hover:not(.ativo) {
+    background-color: #c69edf;
+    color: white;
+}
+
+.conteudo
+{
+    margin-left: 25%;
+    padding: 1vh;
+}
+
+.conteudo h1
+{
+    text-align: center;
+    color: #220038
+}
+
+.conteudo h2
+{
+    color: #220038
+}
+
+.alinhamento
+{
+    margin-left: 3vw
+}
+
+.conteudo p, label
+{
+    font-size: 2.5vh;
+    color: #220038
+}
+
+.botao
+{
+    background-color: #4B0082;
+    color: white;
+    border-style: none;
+    padding: 1.5vh;
+    padding-left: 2vh;
+    padding-right: 2vh;
+    margin-right: 5px;
+    font-size: 2.5vh;
+}
+
+input
+{
+    margin-bottom: 1.5vh;
+}
+
+hr
+{
+    border-top-color: #c3a8d6;
+    border-bottom-color: #f7ecff;
+}
+
+table
+{
+    border-collapse: collapse;
+    border-width: 1px;
+    border-style: solid;
+}
+td, th
+{
+    border-width: 1px;
+    border-style: solid;
+}
