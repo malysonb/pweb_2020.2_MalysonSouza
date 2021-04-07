@@ -7,21 +7,21 @@
     <meta name="Autor" content="Malyson Souza">
     <meta name="Codigo Secreto" content="1777919141">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
     <title>pweb_2020.2_MalysonSouza</title>
 </head>
 
 <body>
     <ul>
-        <li><a href="index.html">Inicio</a></li>
+        <li><a href="/">Inicio</a></li>
         <hr>
-        <li><a href="noticias.html">Canais de noticias</a></li>
+        <li><a href="/public/noticias.html">Canais de noticias</a></li>
         <hr>
-        <li><a href="adicionar.html">Adicionar Pessoa</a></li>
-        <li><a href="listar.html">Listar Pessoas</a></li>
+        <li><a href="/adicionarPessoa">Adicionar Pessoa</a></li>
+        <li><a href="/listarPessoas">Listar Pessoas</a></li>
         <hr>
         <li><a class="ativo" href="#">Sobre o site</a></li>
-        <li><a href="contato.html">Mande um e-mail</a></li>
+        <li><a href="/public/contato.html">Mande um e-mail</a></li>
     </ul>
     <div class="conteudo">
         <h1>Sobre</h1>
