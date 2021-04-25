@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="Autor" content="Malyson Souza">
+    <meta name="Codigo Secreto" content="1918692686">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>Agropopshop — Produtos</title>
+</head>
+
+<body>
+    <ul>
+        <li><a href="/">Inicio</a></li>
+        <hr>
+        <li><a href="/public/noticias.html">Canais de noticias</a></li>
+        <hr>
+        <li><a class="ativo" href="#">Adicionar Pessoa</a></li>
+        <li><a href="/listarPessoas">Listar Pessoas</a></li>
+        <hr>
+        <li><a href="/public/sobre.html">Sobre o site</a></li>
+        <li><a href="/public/contato.html">Mande um e-mail</a></li>
+    </ul>
+    <div class="conteudo">
+        <h1 th:text="${isEdit} ? 'Editando produto' : 'Adicionando produto'"></h1>
+        <div class="alinhamento">
+            <form method="POST" th:object="${produto}" th:action="@{isEdit} ? '/produtos/adicionar' : '/produtos/editar/{id}(id=${produto.id})'" class="formulario">
+                <label for="Nome">* Nome Produto: </label>
+                <input type="text" name="Nome" id="Nome" placeholder="Nome do Produto" th:field=*{nomeProduto} required><br>
+                <label for="Marca">* Marca: </label>
+                <input type="text" name="Marca" id="Marca" placeholder="Marca do produto" th:field=*{marca} required><br>
+                <label for="dimensoes">* Dimensões (em cm): </label><br>
+                <input type="number" step=1 name="dimensoes" id="altura" placeholder="Altura" th:field=*{altura} required>
+                <input type="number" step=1 name="dimensoes" id="largura" placeholder="Largura" th:field=*{largura} required>
+                <input type="number" step=1 name="dimensoes" id="profundidade" placeholder="profundidade" th:field=*{profundidade} required><br>
+                <label for="peso">* Peso (em Kg): </label>
+                <input type="number" step=0.01 name="peso" id="peso" placeholder="Peso" th:field=*{peso} required><br>
+                <label for="preco">* Preço: </label>
+                <input type="number" step=0.05 name="preco" id="preco" placeholder="Preço" th:field=*{preco} required><br>
+                <input type="submit" value="Enviar" class="botao">
+                <input type="reset" value="Limpar" class="botao">
+            </form>
+            <p>* obrigatório</p>
+        </div>
+    </div>
+</body>
+
+</html>
