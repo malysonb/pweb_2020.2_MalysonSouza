@@ -31,8 +31,9 @@ public class ProdutoController {
 	@GetMapping("/adicionar")
 	public ModelAndView formAdicionarProduto(){
 		ModelAndView mav = new ModelAndView("formProduto");
-		
-		mav.addObject(new Produto());
+		Boolean isEdit = false;
+		mav.addObject("isEdit", isEdit);
+		mav.addObject("produto", new Produto());
 		return mav;
 	}
 	
@@ -47,7 +48,9 @@ public class ProdutoController {
 		Produto produto = produtoRepo.findById(id).orElseThrow(
 				() -> new IllegalAccessError("O produto com id: " + id + " não existe!"));
 		ModelAndView mav = new ModelAndView("formProduto");
-		mav.addObject(produto);
+		Boolean isEdit = true;
+		mav.addObject("isEdit", isEdit);
+		mav.addObject("produto", produto);
 		return mav;
 	}
 	
