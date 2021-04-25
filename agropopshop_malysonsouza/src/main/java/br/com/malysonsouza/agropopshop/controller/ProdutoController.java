@@ -24,7 +24,7 @@ public class ProdutoController {
 	public ModelAndView listarProdutos(){
 		List<Produto> produtos = produtoRepo.findAll();
 		ModelAndView mav = new ModelAndView("listarProdutos");
-		mav.addObject("produto", produtos);
+		mav.addObject("produtos", produtos);
 		return mav;
 	}
 	
@@ -58,6 +58,14 @@ public class ProdutoController {
 	public String editarProduto(@PathVariable("id") long id, Produto produto) {
 		produtoRepo.save(produto);
 		return "redirect:/produtos";
+	}
+	
+	@GetMapping("/remover/{id}")
+	public ModelAndView removerProduto(@PathVariable("id") long id) {
+		Produto aRemover = produtoRepo.findById(id).orElseThrow(
+				() -> new IllegalAccessError("O produto com id: " + id + " não existe!"));
+		produtoRepo.delete(aRemover);
+		return new ModelAndView("redirect:/produtos");
 	}
 	
 }

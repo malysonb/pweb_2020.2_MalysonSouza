@@ -28,7 +28,7 @@ public class Produto implements Serializable{
 	@Column(nullable=false)
 	private String marca;
 	private float altura;
-	private float largura;
+	private float largura;  
 	private float profundidade;
 	private float peso;
 	@Column(nullable=false)

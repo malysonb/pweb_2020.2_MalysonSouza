@@ -26,7 +26,7 @@
     <div class="conteudo">
         <h1 th:text="${isEdit} ? 'Editando produto' : 'Adicionando produto'"></h1>
         <div class="alinhamento">
-            <form method="POST" th:object="${produto}" th:action="@{isEdit} ? '/produtos/adicionar' : '/produtos/editar/{id}(id=${produto.id})'" class="formulario">
+            <form method="POST" th:object="${produto}" th:action="@{${isEdit}? '/produtos/editar/{id}' : '/produtos/adicionar' (id=${produto.id})}" class="formulario">
                 <label for="Nome">* Nome Produto: </label>
                 <input type="text" name="Nome" id="Nome" placeholder="Nome do Produto" th:field=*{nomeProduto} required><br>
                 <label for="Marca">* Marca: </label>
