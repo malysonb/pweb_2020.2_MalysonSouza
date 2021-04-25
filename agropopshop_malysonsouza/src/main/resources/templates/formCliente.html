@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="Autor" content="Malyson Souza">
+    <meta name="Codigo Secreto" content="1918692686">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>Agropopshop - Clientes</title>
+</head>
+
+<body>
+    <ul>
+        <li><a href="/">Inicio</a></li>
+        <hr>
+        <p>Area do cliente</p>
+        <li><a href="#">TODO</a></li>
+        <hr>
+        <p>Administração</p>
+        <li><a class="ativo" href="/clientes">Organizar Clientes</a></li>
+        <li><a href="/produtos">Organizar Produtos</a></li>
+        <hr>
+        <li><a href="/public/sobre.html">Sobre o site</a></li>
+        <li><a href="/public/contato.html">Mande um e-mail</a></li>
+    </ul>
+    <div class="conteudo">
+        <h1 th:text="${isEdit} ? 'Editando cliente:' : 'Adicionando cliente:'"></h1>
+        <div class="alinhamento">
+            <form th:object="${cliente}" method="POST" th:action="@{${isEdit}? '/clientes/editar/{id}' : '/clientes/adicionar' (id=${cliente.id})}" class="formulario">
+                <label for="Nome">* Nome Completo: </label>
+                <input type="text" name="Nome" id="Nome" placeholder="Seu nome completo" th:field=*{nome} required><br>
+                <label for="Nascimento">* Data de Nascimento: </label>
+                <input type="date" name="Nascimento" id="Nascimento" th:field=*{dataNascimento} required><br>
+                <label for="Email">* E-mail: </label>
+                <input type="email" name="Email" id="Email" placeholder="exemplo@exemplo.com" th:field=*{email} required><br>
+                <label for="estados-brasil">* Escolha seu estado: </label>
+                <select th:field="*{estado}"> <!--Vlw Cassio Cardoso! https://gist.github.com/cassiocardoso/8966749 -->
+	                <option th:value="AC">Acre</option>
+	                <option th:value="AL">Alagoas</option>
+	                <option th:value="AP">Amapá</option>
+	                <option th:value="AM">Amazonas</option>
+	                <option th:value="BA">Bahia</option>
+	                <option th:value="CE">Ceará</option>
+	                <option th:value="DF">Distrito Federal</option>
+	                <option th:value="ES">Espírito Santo</option>
+	                <option th:value="GO">Goiás</option>
+	                <option th:value="MA">Maranhão</option>
+	                <option th:value="MT">Mato Grosso</option>
+	                <option th:value="MS">Mato Grosso do Sul</option>
+	                <option th:value="MG">Minas Gerais</option>
+	                <option th:value="PA">Pará</option>
+	                <option th:value="PB">Paraíba</option>
+	                <option th:value="PR">Paraná</option>
+	                <option th:value="PE">Pernambuco</option>
+	                <option th:value="PI">Piauí</option>
+	                <option th:value="RJ">Rio de Janeiro</option>
+	                <option th:value="RN">Rio Grande do Norte</option>
+	                <option th:value="RS">Rio Grande do Sul</option>
+	                <option th:value="RO">Rondônia</option>
+	                <option th:value="RR">Roraima</option>
+	                <option th:value="SC">Santa Catarina</option>
+	                <option th:value="SP">São Paulo</option>
+	                <option th:value="SE">Sergipe</option>
+	                <option th:value="TO">Tocantins</option>
+                </select><br>
+                <label for="CEP">* CEP: </label>
+                <input type="text" name="CEP" id="CEP" placeholder="Seu CEP" th:field=*{CEP} required><br>
+                <label for="Endereco">* Endereço: </label>
+                <input type="text" name="Endereco" id="Endereco" placeholder="Seu endereco" th:field=*{endereco} required><br>
+                <p style="font-size: 2.5vh; margin: 0vh;">* Sexo:</p>
+                <input type="radio" name="Sexo" id="Masculino" value="Masculino"  th:field=*{genero} required>
+                <label for="Masculino">Masculino</label><br>
+                <input type="radio" name="Sexo" id="Feminino" value="Feminino" th:field=*{genero} required>
+                <label for="Feminino">Feminino</label><br>
+                <input type="radio" name="Sexo" id="Não informar" value="Não informar" th:field=*{genero} required>
+                <label for="Não informar">Não informar</label><br>
+                <input type="submit" value="Enviar" class="botao">
+                <input type="reset" value="Limpar" class="botao">
+            </form>
+            <p>* obrigatório</p>
+        </div>
+    </div>
+</body>
+
+</html>

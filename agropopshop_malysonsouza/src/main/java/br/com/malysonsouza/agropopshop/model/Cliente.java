@@ -30,6 +30,7 @@ public class Cliente implements Serializable{
 	private String nome;
 	private String email;
 	private String genero;
+	private String estado;
 	private String endereco;
 	private String CEP;
 	
@@ -81,5 +82,11 @@ public class Cliente implements Serializable{
 	
 	public void setGenero(String genero) {
 		this.genero = genero;
+	}
+	public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 }
