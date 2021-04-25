@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.com.malysonsouza.agropopshop</groupId>
-	<artifactId>agropopshop_malysonsouza</artifactId>
+	<artifactId>agropopshop_Malysonsouza</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
-	<name>agropopshop_malysonsouza</name>
+	<name>agropopshop_Malysonsouza</name>
 	<description>Projeto de PWEB 2020.2</description>
 	<properties>
 		<java.version>15</java.version>
