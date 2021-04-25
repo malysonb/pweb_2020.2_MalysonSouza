@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="Autor" content="Malyson Souza">
-    <meta name="Codigo Secreto" content="1918692686">
+    <meta name="Codigo Secreto" content="1943928042">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <title>pweb_2020.2_MalysonSouza</title>
@@ -36,23 +36,23 @@
                     <th>Data de nascimento</th>
                     <th>E-Mail</th>
                     <th>Sexo</th>
-                    <th>Estado</th>
-                    <th>endereco</th>
-                    <th>CEP</th>
+                    <th>UF</th>
+                    <th>Endereço</th>
+                    <th>Telefone</th>
                     <th>Editar</th>
                     <th>Remover</th>
                 </tr>
                 <tr th:each="cliente: ${clientes}">
                 	<td th:text=${cliente.id}></td>
                 	<td th:text=${cliente.nome}></td>
+                    <td th:text="${#temporals.format(cliente.dataNascimento,'dd-MM-yyyy')}"></td>
                 	<td>
                 		<a th:href="'mailto:' + ${cliente.email}" th:text="${cliente.email}"></a>
                 	</td>
-                	<td th:text="${#temporals.format(cliente.dataNascimento,'dd-MM-yyyy')}"></td>
                 	<td th:text=${cliente.genero}></td>
                     <td th:text="${cliente.estado}"></td>
-                    <td th:text="${cliente.endereco}"></td>
-                    <td th:text="${cliente.CEP}"></td>
+                    <td th:text="${cliente.endereco} + ' - ' + ${cliente.CEP}"></td>
+                    <td th:text="${cliente.telefone}"></td>
                 	<td>
                 		<a th:href="@{/clientes/editar/{id}(id=${cliente.id})}">Editar</a>
                 	</td>

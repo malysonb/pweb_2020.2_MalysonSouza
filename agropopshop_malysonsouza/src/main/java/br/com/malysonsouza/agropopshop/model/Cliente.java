@@ -32,6 +32,7 @@ public class Cliente implements Serializable{
 	private String genero;
 	private String estado;
 	private String endereco;
+	private String telefone;
 	private String CEP;
 	
 	@Column(nullable=false)
@@ -88,5 +89,11 @@ public class Cliente implements Serializable{
 	}
 	public void setEstado(String estado) {
 		this.estado = estado;
+	}
+	public String getTelefone() {
+		return telefone;
+	}
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
 }

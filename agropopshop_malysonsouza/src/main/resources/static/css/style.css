@@ -20,7 +20,7 @@ ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    width: 25%;
+    width: 20%;
     background-color: #f1dcff;
     position: fixed;
     height: 100%;
@@ -46,7 +46,7 @@ li a:hover:not(.ativo) {
 
 .conteudo
 {
-    margin-left: 25%;
+    margin-left: 20%;
     padding: 1vh;
 }
 
