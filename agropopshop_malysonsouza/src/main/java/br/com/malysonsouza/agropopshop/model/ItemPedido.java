@@ -1,17 +1,13 @@
 package br.com.malysonsouza.agropopshop.model;
 
-import java.io.Serializable;
-import java.time.LocalDate;
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+
+import org.springframework.data.relational.core.mapping.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,21 +17,20 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "pedidos")
-public class Pedido implements Serializable{
-    
+@Table("item_pedido")
+public class ItemPedido {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private LocalDate dataVenda;
-    private String formaPagamento;
-    private int qnt;
+    @ManyToOne
+	@JoinColumn(name = "id_pedido_produto")
+	private Pedido pedidoProduto;
 
     @ManyToOne
-    @JoinColumn(name = "id_cliente_pedido")
-    private Cliente clientePedido;
+    @JoinColumn(name = "id_produto")
+    private Produto produto;
 
-    @OneToMany(mappedBy = "pedidoProduto")
-    private List<ItemPedido> pedidoProduto;
+    private int quantidade;
 }

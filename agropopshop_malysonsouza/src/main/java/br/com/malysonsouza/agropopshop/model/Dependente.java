@@ -2,7 +2,6 @@ package br.com.malysonsouza.agropopshop.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,5 +30,5 @@ public class Dependente implements Serializable{
     
     @ManyToOne
     @JoinColumn(name = "id_cliente_dependente")
-    private List<Cliente> clienteDependente;
+    private Cliente clienteDependente;
 }
