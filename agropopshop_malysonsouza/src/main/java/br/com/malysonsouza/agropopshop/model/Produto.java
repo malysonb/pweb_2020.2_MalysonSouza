@@ -33,5 +33,5 @@ public class Produto implements Serializable{
 	private float peso;
 	@Column(nullable=false)
 	private double preco;
-	
+
 }

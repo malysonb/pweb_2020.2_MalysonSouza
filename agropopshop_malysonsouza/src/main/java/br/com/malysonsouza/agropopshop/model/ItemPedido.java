@@ -1,5 +1,7 @@
 package br.com.malysonsouza.agropopshop.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,15 +12,17 @@ import javax.persistence.ManyToOne;
 import org.springframework.data.relational.core.mapping.Table;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Data
 @Entity
 @Table("item_pedido")
-public class ItemPedido {
+public class ItemPedido implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,6 +35,9 @@ public class ItemPedido {
     @ManyToOne
     @JoinColumn(name = "id_produto")
     private Produto produto;
+
+    private double preco;
+    private double total;
 
     private int quantidade;
 }

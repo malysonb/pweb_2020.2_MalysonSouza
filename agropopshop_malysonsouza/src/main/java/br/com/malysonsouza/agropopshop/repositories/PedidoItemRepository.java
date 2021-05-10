@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import br.com.malysonsouza.agropopshop.model.ItemPedido;
 
-public interface ItemPedidoRepository extends JpaRepository<ItemPedido, Long>{
+public interface PedidoItemRepository extends JpaRepository<ItemPedido, Long>{
     
 }

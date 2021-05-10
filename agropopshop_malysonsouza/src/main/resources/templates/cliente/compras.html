@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="Autor" content="Malyson Souza">
+    <meta name="Codigo Secreto" content="1943928042">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>pweb_2020.2_MalysonSouza</title>
+</head>
+
+<body>
+    <ul>
+        <li><a href="/">Inicio</a></li>
+        <hr>
+        <p>Area do cliente</p>
+        <li><a href="#">TODO</a></li>
+        <hr>
+        <p>Administração</p>
+        <li><a href="/clientes">Organizar Clientes</a></li>
+        <li><a class="ativo" href="/produtos">Organizar Produtos</a></li>
+        <hr>
+        <li><a href="/public/sobre.html">Sobre o site</a></li>
+        <li><a href="/public/contato.html">Mande um e-mail</a></li>
+    </ul>
+    <div class="conteudo">
+        <h1>Lista de compras:</h1>
+        <p th:text="'Lista de compras de: ' + ${cliente.nome}"></p>
+        <div>
+            <form th:object="${dto}" th:action="@{'/clientes/compras/{id}'(id=${cliente.id})}" method="post">
+                <table style="width: 100%;">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome Produto</th>
+                        <th>Marca</th>
+                        <th>Dimensões</th>
+                        <th>Peso</th>
+                        <th>Preço</th>
+                        <th>Quantidade</th>
+                        <th>Adicionar ao carrinho</th>
+                    </tr>
+                    <tr th:each="produto, iStat: ${produtos}">
+                        <td th:text=${produto.id}></td>
+                        <td th:text=${produto.nomeProduto}></td>
+                        <td th:text=${produto.marca}></td>
+                        <td
+                            th:text="${produto.altura} +' X '+ ${produto.largura} +' X '+ ${produto.profundidade} + ' cm'">
+                        </td>
+                        <td th:text="${produto.peso} + ' Kg'"></td>
+                        <td th:text="'R$' + ${produto.preco}"></td>
+                        <td>
+                            <input type="number" class="qnt" id="" th:field="*{produtosList[__${iStat.index}__].quantidade}" min="1" required value=1>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="" id="" th:field="*{produtosList[__${iStat.index}__].id}" th:value="${produto.id}">
+                            <!---<a name="adicionar" href="/carrinho/1">Adicionar ao carrinho</a> --->
+                        </td>
+                    </tr>
+                </table>
+                <label for="pagamento">Forma de pagamento</label>
+                <select name="pagamento" id="" th:field="*{pagamento}">
+                    <option th:value="Boleto">Boleto</option>
+                    <option th:value="Credito">Crédito</option>
+                    <option th:value="Debito">Debito</option>
+                </select>
+                <input type="submit" value="Adicionar" class="botao">
+            </form>
+            <hr>
+        </div>
+    </div>
+    <script>
+        var campos = document.getElementsByClassName("qnt");
+
+        for (let index = 0; index < campos.length; index++) {
+            campos[index].value = "1";
+        }
+    </script>
+</body>
+
+</html>
