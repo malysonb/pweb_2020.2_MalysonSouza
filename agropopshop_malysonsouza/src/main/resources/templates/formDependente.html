@@ -27,9 +27,9 @@
         <li><a href="/public/contato.html">Mande um e-mail</a></li>
     </ul>
     <div class="conteudo">
-        <h1 th:text="${isEdit} ? 'Editando cliente:' : 'Adicionando cliente:'"></h1>
+        <h1 th:text="${isEdit} ? 'Editando dependente:' : 'Adicionando dependente:'"></h1>
         <div class="alinhamento">
-            <form th:object="${cliente}" method="POST" th:action="@{${isEdit}? '/clientes/editar/{id}' : '/clientes/adicionar' (id=${cliente.id})}" class="formulario">
+            <form th:object="${dependente}" method="POST" th:action="@{${isEdit}? '/dependentes/editar/{id}' : '/dependentes/adicionar/{id}' (id=${isEdit}? ${dependente.id} : ${cliente.id})}" class="formulario">
                 <label for="Nome">* Nome Completo: </label>
                 <input type="text" name="Nome" id="Nome" placeholder="Seu nome completo" th:field=*{nome} required><br>
                 <label for="Nascimento">* Data de Nascimento: </label>

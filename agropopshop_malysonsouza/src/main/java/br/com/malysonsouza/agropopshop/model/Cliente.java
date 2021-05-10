@@ -42,7 +42,7 @@ public class Cliente implements Serializable{
 	private LocalDate dataNascimento;
 
 	@OneToMany(mappedBy = "clienteDependente")
-	private List<Dependente> dependente;
+	private List<Dependente> dependentes;
 
 	@OneToMany(mappedBy = "clientePedido")
 	private List<Pedido> pedidos;
