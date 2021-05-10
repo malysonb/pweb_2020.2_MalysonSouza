@@ -33,6 +33,7 @@
         <p th:text="'Metodo de pagamento: ' + ${pedido.formaPagamento}"></p>
         <p th:text="'Endereço: ' + ${cliente.endereco} + ' ' + ${cliente.CEP} + ' ' + ${cliente.estado}"></p>
         <p th:text="'Status do pedido: ' + ${pedido.status}"></p>
+        <p th:text="'Data da venda: ' + ${#temporals.format(pedido.dataVenda,'dd-MM-yyyy')}"></p>
         <div>
             <form th:object="${pedido}" th:action="@{'/pedidos/cancelar/{id}'(id=${pedido.id})}" method="post">
                 <table style="width: 100%;">
