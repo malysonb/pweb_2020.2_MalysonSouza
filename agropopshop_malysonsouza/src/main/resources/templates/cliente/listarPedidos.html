@@ -13,11 +13,11 @@
 
 <body>
     <ul>
-        <li><a class="ativo" href="/">Inicio</a></li>
+        <li><a href="/">Inicio</a></li>
         <hr>
         <p>Area do cliente</p>
         <li><a href="/clientes/compras">Compras</a></li>
-        <li><a href="/clientes/pedidos">Listar Pedidos</a></li>
+        <li><a class="ativo" href="/clientes/pedidos">Listar Pedidos</a></li>
         <hr>
         <p>Administração</p>
         <li><a href="/clientes">Organizar Clientes</a></li>
@@ -27,10 +27,25 @@
         <li><a href="/public/contato.html">Mande um e-mail</a></li>
     </ul>
     <div class="conteudo">
-        <h1>AgroPopShop</h1>
-        <div class="alinhamento">
-            <h2>Aqui vai haver varias coisas bacanas</h2>
-            <p>Não tive muito tempo essa semana, mas consegui implementar os pedidos.</p><br>
+        <h1>Lista de pedidos:</h1>
+        <p th:text="'Cliente: ' + ${cliente.nome}"></p>
+        <div>
+            <table style="width: 100%;">
+                <tr>
+                    <th>ID</th>
+                    <th>Status</th>
+                    <th>Detalhar</th>
+                </tr>
+                <tr th:each="pedido: ${pedidos}">
+                    <td th:text=${pedido.id}></td>
+                    <td th:text="${pedido.status}"></td>
+                    <td>
+                        <a th:href="@{/pedidos/{id}(id=${pedido.id})}">Detalhar</a>
+                    </td>
+                </tr>
+            </table>
+            <hr>
+            <a th:href="@{/clientes/pedidos/}" class="botao">Voltar</a>
         </div>
     </div>
 </body>

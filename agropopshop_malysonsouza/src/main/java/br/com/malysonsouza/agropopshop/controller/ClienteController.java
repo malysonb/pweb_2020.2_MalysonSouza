@@ -76,6 +76,35 @@ public class ClienteController {
 		return mav;
 	}
 
+	@GetMapping("/compras")
+	public ModelAndView ComprasSemID() {
+
+		ModelAndView mav = new ModelAndView("cliente/select");
+		List<Cliente> clientes = clienteRepo.findAll();
+		mav.addObject("clientes", clientes);
+		mav.addObject("path", "clientes/compras");
+		return mav;
+	}
+
+	@GetMapping("/pedidos/{id}")
+    public ModelAndView getById(@PathVariable("id") long id){
+        ModelAndView mav = new ModelAndView("cliente/listarPedidos");
+		Cliente cliente = clienteRepo.findById(id).orElseThrow(() -> new IllegalAddException("Este id é invalido: " + id));
+        mav.addObject("pedidos", pedidoRepo.findByClientePedido(cliente));
+        mav.addObject("cliente", cliente);
+        return mav;
+    }
+
+	@GetMapping("/pedidos")
+	public ModelAndView PedidosSemID() {
+
+		ModelAndView mav = new ModelAndView("cliente/select");
+		List<Cliente> clientes = clienteRepo.findAll();
+		mav.addObject("clientes", clientes);
+		mav.addObject("path", "clientes/pedidos");
+		return mav;
+	}
+
 	@Transactional
 	@PostMapping("/compras/{id}")
 	public ModelAndView compras(@PathVariable("id") long id, PedidoDTO dto) {
@@ -85,12 +114,15 @@ public class ClienteController {
 		pedido.setClientePedido(cliente);
 		pedido.setDataVenda(LocalDate.now());
 		pedido.setFormaPagamento(dto.getPagamento());
+		pedido.setStatus("Efetuado");
 		List<ItemPedido> itmped = converter(pedido,dto.getProdutosList());
 		itemPedidoRepo.saveAll(itmped);
 		pedidoRepo.save(pedido);
 		pedido.setPedidoProduto(itmped);
-		return new ModelAndView("redirect:/pedidos/" + id);
+		return new ModelAndView("redirect:/pedidos/" + pedido.getId());
 	}
+
+
 
 	@GetMapping("/editar/{id}")
 	public ModelAndView formEditarCliente(@PathVariable("id") long id) {

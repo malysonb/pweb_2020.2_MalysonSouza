@@ -30,7 +30,7 @@ public class Pedido implements Serializable{
 
     private LocalDate dataVenda;
     private String formaPagamento;
-    private double total;
+    private String status;
 
     @ManyToOne
     @JoinColumn(name = "id_cliente_pedido")
