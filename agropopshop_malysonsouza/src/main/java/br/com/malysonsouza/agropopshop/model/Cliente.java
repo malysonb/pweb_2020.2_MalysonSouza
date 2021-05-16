@@ -33,6 +33,8 @@ public class Cliente implements Serializable{
 	private String email;
 	private String genero;
 	private String estado;
+	private String cidade;
+	private String bairro;
 	private String endereco;
 	private String telefone;
 	private String CEP;
