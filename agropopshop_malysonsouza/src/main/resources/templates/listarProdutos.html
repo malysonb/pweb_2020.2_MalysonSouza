@@ -47,7 +47,7 @@
                 	<td th:text=${produto.nomeProduto}></td>
                 	<td th:text=${produto.marca}></td>
                 	<td th:text="${produto.altura} +' X '+ ${produto.largura} +' X '+ ${produto.profundidade} + ' cm'"></td>
-                    <td th:text="(${produto.altura} *  ${produto.largura} * ${produto.profundidade})/100 + ' m³'"></td>
+                    <td th:text="(${produto.altura} * ${produto.largura} * ${produto.profundidade})/100 + ' m³'"></td>
                 	<td th:text="${produto.peso} + ' Kg'"></td>
                     <td th:text="'R$' + ${produto.preco}"></td>
                 	<td>
