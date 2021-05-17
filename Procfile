@@ -1,0 +1,1 @@
+web: java -jar agropopshop_malysonsouza/target/agropopshop_malysonsouza-1.0.0-SNAPSHOT.jar
