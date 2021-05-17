@@ -31,7 +31,7 @@
         <p th:text="'ID do pedido: ' + ${pedido.id}"></p>
         <p th:text="'Cliente: ' + ${cliente.nome}"></p>
         <p th:text="'Metodo de pagamento: ' + ${pedido.formaPagamento}"></p>
-        <p th:text="'Endereço: ' + ${cliente.endereco} + ' ' + ${cliente.CEP} + ' ' + ${cliente.estado}"></p>
+        <p th:text="'Endereço: ' + ${cliente.endereco} + ' - ' + ${cliente.bairro} + ', ' + ${cliente.cidade} + ' - ' + ${cliente.estado} + ' — ' + ${cliente.CEP} + '.'"></p>
         <p th:text="'Status do pedido: ' + ${pedido.status}"></p>
         <p th:text="'Data da venda: ' + ${#temporals.format(pedido.dataVenda,'dd-MM-yyyy')}"></p>
         <div>
