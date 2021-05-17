@@ -38,6 +38,7 @@
             <form th:object="${pedido}" th:action="@{'/pedidos/cancelar/{id}'(id=${pedido.id})}" method="post">
                 <table style="width: 100%;">
                     <tr>
+                        <th>Imagem</th>
                         <th>Nome Produto</th>
                         <th>Marca</th>
                         <th>Dimensões</th>
@@ -48,6 +49,9 @@
                         <th>Total</th>
                     </tr>
                     <tr th:each="itemPedido, iStat: ${itempedidos}">
+                        <td>
+                            <img id="imagem" th:src="@{${itemPedido.produto.getFoto} ? ('data:image/jpeg;base64,' + ${itemPedido.produto.getFotoBase64()}) : @{/images/semImagem.png}}" th:alt="'Foto do produto ' + ${itemPedido.produto.id}">
+                        </td>
                         <td th:text=${itemPedido.produto.nomeProduto}></td>
                         <td th:text=${itemPedido.produto.marca}></td>
                         <td

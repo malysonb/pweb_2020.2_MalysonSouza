@@ -34,6 +34,7 @@
                 <table style="width: 100%;">
                     <tr>
                         <th>ID</th>
+                        <th>Imagem</th>
                         <th>Nome Produto</th>
                         <th>Marca</th>
                         <th>Dimensões</th>
@@ -45,6 +46,9 @@
                     </tr>
                     <tr th:each="produto, iStat: ${produtos}">
                         <td th:text=${produto.id}></td>
+                        <td>
+                            <img id="imagem" th:src="@{${produto.getFoto} ? ('data:image/jpeg;base64,' + ${produto.getFotoBase64()}) : @{/images/semImagem.png}}" th:alt="'Foto do produto ' + ${produto.id}">
+                        </td>
                         <td th:text=${produto.nomeProduto}></td>
                         <td th:text=${produto.marca}></td>
                         <td

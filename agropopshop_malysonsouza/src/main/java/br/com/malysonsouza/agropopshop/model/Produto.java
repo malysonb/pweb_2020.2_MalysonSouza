@@ -1,12 +1,14 @@
 package br.com.malysonsouza.agropopshop.model;
 
 import java.io.Serializable;
+import java.util.Base64;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -33,5 +35,10 @@ public class Produto implements Serializable{
 	private float peso;
 	@Column(nullable=false)
 	private double preco;
+	@Lob
+	private byte[] foto;
 
+	public String getFotoBase64(){
+		return Base64.getEncoder().encodeToString(this.foto);
+	}
 }

@@ -29,7 +29,7 @@
     <div class="conteudo">
         <h1 th:text="${isEdit} ? 'Editando produto:' : 'Adicionando produto:'"></h1>
         <div class="alinhamento">
-            <form method="POST" th:object="${produto}" th:action="@{${isEdit}? '/produtos/editar/{id}' : '/produtos/adicionar' (id=${produto.id})}" class="formulario">
+            <form method="POST" th:object="${produto}" enctype="multipart/form-data" th:action="@{${isEdit}? '/produtos/editar/{id}' : '/produtos/adicionar' (id=${produto.id})}" class="formulario">
                 <label for="Nome">* Nome Produto: </label>
                 <input type="text" name="Nome" id="Nome" placeholder="Nome do Produto" th:field=*{nomeProduto} required><br>
                 <label for="Marca">* Marca: </label>
@@ -42,6 +42,8 @@
                 <input type="number" step=0.01 name="peso" id="peso" placeholder="Peso" th:field=*{peso} required><br>
                 <label for="preco">* Preço: </label>
                 <input type="number" step=0.05 name="preco" id="preco" placeholder="Preço" th:field=*{preco} required><br>
+                <label for="imagem"> Foto do produto:</label>
+                <input type="file" name="imagem" id="imagem" accept="image/png, image/jpeg"><br>
                 <input type="submit" value="Enviar" class="botao">
                 <input type="reset" value="Limpar" class="botao">
             </form>

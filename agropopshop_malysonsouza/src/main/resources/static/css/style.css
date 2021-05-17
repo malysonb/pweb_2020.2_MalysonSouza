@@ -16,6 +16,16 @@ img
     margin-right: auto;
 }
 
+#imagem
+{
+    display: block;
+    max-height: 6vw;
+    border-style: none;
+    border-width: 0px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 ul {
     list-style-type: none;
     margin: 0;

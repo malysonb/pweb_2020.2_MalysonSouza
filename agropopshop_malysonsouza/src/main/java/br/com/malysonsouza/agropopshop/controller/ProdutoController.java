@@ -2,12 +2,16 @@ package br.com.malysonsouza.agropopshop.controller;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.malysonsouza.agropopshop.model.Produto;
@@ -25,6 +29,7 @@ public class ProdutoController {
 		List<Produto> produtos = produtoRepo.findAll();
 		ModelAndView mav = new ModelAndView("listarProdutos");
 		mav.addObject("produtos", produtos);
+
 		return mav;
 	}
 	
@@ -38,7 +43,17 @@ public class ProdutoController {
 	}
 	
 	@PostMapping("/adicionar")
-	public String adicionarProduto(Produto produto) {
+	@Transactional
+	public String adicionarProduto(@RequestParam("imagem") MultipartFile imagem, Produto produto) {
+		if(!imagem.isEmpty()){
+			byte[] bytes = new byte[(int) imagem.getSize()];
+			try {
+				bytes = imagem.getBytes();
+			} catch (Exception e) {
+				System.out.println("opa deu errado" + e);
+			}
+			produto.setFoto(bytes);
+		}
 		produtoRepo.save(produto);
 		return "redirect:/produtos";
 	}
@@ -55,7 +70,16 @@ public class ProdutoController {
 	}
 	
 	@PostMapping("/editar/{id}")
-	public String editarProduto(@PathVariable("id") long id, Produto produto) {
+	public String editarProduto(@RequestParam("imagem") MultipartFile imagem, @PathVariable("id") long id, Produto produto) {
+		if(!imagem.isEmpty()){
+			byte[] bytes = new byte[(int) imagem.getSize()];
+			try {
+				bytes = imagem.getBytes();
+			} catch (Exception e) {
+				System.out.println("opa deu errado" + e);
+			}
+			produto.setFoto(bytes);
+		}
 		produtoRepo.save(produto);
 		return "redirect:/produtos";
 	}
