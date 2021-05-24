@@ -39,8 +39,8 @@
                 <tr th:each="pedido: ${pedidos}">
                     <td th:text=${pedido.id}></td>
                     <td th:text="${pedido.status}"></td>
-                    <td>
-                        <a th:href="@{/pedidos/{id}(id=${pedido.id})}">Detalhar</a>
+                    <td style="padding: 0.5vh;">
+                        <a th:href="@{/pedidos/{id}(id=${pedido.id})}" class="botao" style="padding: 0.5vh;">Detalhar</a>
                     </td>
                 </tr>
             </table>

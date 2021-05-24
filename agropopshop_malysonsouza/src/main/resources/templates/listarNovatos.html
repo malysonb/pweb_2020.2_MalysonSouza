@@ -37,7 +37,7 @@
                     <label for="Mes">Exibindo do mês: </label>
                     <input type="month" name="Mes" required th:value="${dataStr}" oninput="setAction(this.value)"
                         id="Mes" th:max="${#dates.format(#dates.createNow(), 'yyyy-MM')}"><br>
-                    <input type="submit" value="Pesquisar">
+                    <input type="submit" value="Pesquisar" class="botao">
                 </form>
                 <hr>
                 <table style="width: 100%;">
