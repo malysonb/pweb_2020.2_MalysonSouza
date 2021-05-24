@@ -139,6 +139,8 @@ td, th
     padding-top: 1vh;
     padding-bottom: 1vh;
     border-radius: 0.8vh;
+    border-style: solid;
+    border-width: 0px 2.5px 2.5px 0px;
     border-top-left-radius: 0px;
     background-color: #4B0082;
 }
@@ -146,8 +148,10 @@ td, th
 .info div
 {
     padding: 1vh;
-    margin-left: 1vh;
-    margin-right: 1vh;
+    margin-left: 0.5vw;
+    margin-right: 0.5vw;
     border-radius: 1vh;
+    border-style: solid;
+    border-width: 2.5px 0px 0px 2.5px;
     background-color: #f1dcff;;
 }
