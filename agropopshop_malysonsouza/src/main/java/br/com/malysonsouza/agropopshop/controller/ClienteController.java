@@ -1,6 +1,7 @@
 package br.com.malysonsouza.agropopshop.controller;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -59,6 +60,7 @@ public class ClienteController {
 
 	@PostMapping("/adicionar")
 	public String adicionarCliente(Cliente p) {
+		p.setDataCadastro(LocalDate.now());
 		this.clienteRepo.save(p);
 		return "redirect:/clientes";
 	}
@@ -165,6 +167,26 @@ public class ClienteController {
 					.build();
 				return itemPedido;
 		}).collect(Collectors.toList());
+	}
+
+	@GetMapping("/novatos")
+	public ModelAndView listNovatos(){
+		ModelAndView mav = new ModelAndView("listarNovatos");
+		LocalDate data = LocalDate.of(LocalDate.now().getYear(), LocalDate.now().getMonth(), 1);
+		List<Cliente> novatos = clienteRepo.findClientesByMonth(data);
+		String dataStr = String.format("%d-%02d",data.getYear(), data.getMonth().getValue());
+		mav.addObject("dataStr", dataStr);
+		mav.addObject("clientes", novatos);
+		return mav;
+	}
+
+	@PostMapping("/novatos/{yyyy_mm}")
+	public ModelAndView findNovatos(@PathVariable("yyyy_mm") String dataStr){
+		ModelAndView mav = new ModelAndView("listarNovatos");
+		List<Cliente> novatos = clienteRepo.findClientesByMonth(LocalDate.parse(dataStr + "-01", DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+		mav.addObject("clientes", novatos);
+		mav.addObject("dataStr", dataStr);
+		return mav;
 	}
 
 }

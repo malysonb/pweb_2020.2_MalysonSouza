@@ -43,6 +43,10 @@ public class Cliente implements Serializable{
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private LocalDate dataNascimento;
 
+	@Column(nullable=false)
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	private LocalDate dataCadastro;
+
 	@OneToMany(mappedBy = "clienteDependente")
 	private List<Dependente> dependentes;
 

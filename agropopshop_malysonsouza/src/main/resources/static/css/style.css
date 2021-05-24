@@ -86,12 +86,27 @@ li a:hover:not(.ativo) {
 {
     background-color: #4B0082;
     color: white;
-    border-style: none;
+    border-style: solid;
+    border-width: 0px 2.5px 0px 0px;
+    border-color: #140022;
     padding: 1.5vh;
     padding-left: 2vh;
     padding-right: 2vh;
     margin-right: 5px;
     font-size: 2.5vh;
+    margin-bottom: 0px;
+}
+
+.botao.inativo
+{
+    background-color: #f1dcff;
+    color: #140022;
+}
+
+a:hover.botao.inativo
+{
+    background-color: #c69edf;
+    color: white;
 }
 
 input
@@ -101,8 +116,9 @@ input
 
 hr
 {
-    border-top-color: #c3a8d6;
-    border-bottom-color: #f7ecff;
+    border-style: solid;
+    border-color: #4B0082;
+    border-width: 1.5px 0 0 0;
 }
 
 table
@@ -115,4 +131,23 @@ td, th
 {
     border-width: 1px;
     border-style: solid;
+}
+
+.info
+{
+    margin-top: 1.3vh;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    border-radius: 0.8vh;
+    border-top-left-radius: 0px;
+    background-color: #4B0082;
+}
+
+.info div
+{
+    padding: 1vh;
+    margin-left: 1vh;
+    margin-right: 1vh;
+    border-radius: 1vh;
+    background-color: #f1dcff;;
 }

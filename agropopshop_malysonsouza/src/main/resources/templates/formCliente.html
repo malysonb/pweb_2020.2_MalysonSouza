@@ -28,66 +28,83 @@
     </ul>
     <div class="conteudo">
         <h1 th:text="${isEdit} ? 'Editando cliente:' : 'Adicionando cliente:'"></h1>
-        <div class="alinhamento">
-            <form th:object="${cliente}" method="POST" th:action="@{${isEdit}? '/clientes/editar/{id}' : '/clientes/adicionar' (id=${cliente.id})}" class="formulario">
-                <label for="Nome">* Nome Completo: </label>
-                <input type="text" name="Nome" id="Nome" placeholder="Seu nome completo" th:field=*{nome} required><br>
-                <label for="Nascimento">* Data de Nascimento: </label>
-                <input type="date" name="Nascimento" id="Nascimento" th:field=*{dataNascimento} required><br>
-                <label for="Email">* E-mail: </label>
-                <input type="email" name="Email" id="Email" placeholder="exemplo@exemplo.com" th:field=*{email} required><br>
-                <label for="telefone">* Telefone</label>
-                <input type="tel" name="telefone" id="telefone" pattern="(\([0-9]{2}\)[0-9]{4}\-[0-9]{5})|([0-9]{2}[0-9]{4}[0-9]{5})" title="Exemplo de telefone:
-                                            (84)99999-9999 ou 84999999999" placeholder="(84)99999-9999 ou 84999999999" th:field="*{telefone}" required><br>
-                <label for="CEP">* CEP: </label>
-                <input type="text" name="CEP" id="cep" maxlength="9" placeholder="Seu CEP" th:field=*{CEP} required><br>
-                <label for="estados-brasil">* Escolha seu estado: </label>
-                <select id="uf" th:field="*{estado}"> <!--Vlw Cassio Cardoso! https://gist.github.com/cassiocardoso/8966749 -->
-	                <option th:value="AC">Acre</option>
-	                <option th:value="AL">Alagoas</option>
-	                <option th:value="AP">Amapá</option>
-	                <option th:value="AM">Amazonas</option>
-	                <option th:value="BA">Bahia</option>
-	                <option th:value="CE">Ceará</option>
-	                <option th:value="DF">Distrito Federal</option>
-	                <option th:value="ES">Espírito Santo</option>
-	                <option th:value="GO">Goiás</option>
-	                <option th:value="MA">Maranhão</option>
-	                <option th:value="MT">Mato Grosso</option>
-	                <option th:value="MS">Mato Grosso do Sul</option>
-	                <option th:value="MG">Minas Gerais</option>
-	                <option th:value="PA">Pará</option>
-	                <option th:value="PB">Paraíba</option>
-	                <option th:value="PR">Paraná</option>
-	                <option th:value="PE">Pernambuco</option>
-	                <option th:value="PI">Piauí</option>
-	                <option th:value="RJ">Rio de Janeiro</option>
-	                <option th:value="RN">Rio Grande do Norte</option>
-	                <option th:value="RS">Rio Grande do Sul</option>
-	                <option th:value="RO">Rondônia</option>
-	                <option th:value="RR">Roraima</option>
-	                <option th:value="SC">Santa Catarina</option>
-	                <option th:value="SP">São Paulo</option>
-	                <option th:value="SE">Sergipe</option>
-	                <option th:value="TO">Tocantins</option>
-                </select><br>
-                <label for="Cidade">* Cidade: </label>
-                <input type="text" name="Cidade" id="cidade" placeholder="Sua cidade" th:field=*{cidade} required><br>
-                <label for="Bairro">* Bairro: </label>
-                <input type="text" name="Bairro" id="bairro" placeholder="Seu bairro" th:field=*{bairro} required><br>
-                <label for="Endereco">* Endereço: </label>
-                <input type="text" name="Endereco" id="endereco" placeholder="Seu endereco" th:field=*{endereco} required><br>
-                <p style="font-size: 2.5vh; margin: 0vh;">* Sexo:</p>
-                <input type="radio" name="Sexo" id="Masculino" value="Masculino"  th:field=*{genero} required>
-                <label for="Masculino">Masculino</label><br>
-                <input type="radio" name="Sexo" id="Feminino" value="Feminino" th:field=*{genero} required>
-                <label for="Feminino">Feminino</label><br>
-                <input type="radio" name="Sexo" id="Não informar" value="Não informar" th:field=*{genero} required>
-                <label for="Não informar">Não informar</label><br>
-                <input type="submit" value="Enviar" class="botao">
-                <input type="reset" value="Limpar" class="botao">
-            </form>
-            <p>* obrigatório</p>
+        <a th:href=@{/clientes} class="botao inativo">Listar Clientes</a>
+        <a th:href=@{/clientes/adicionar} class="botao" th:text="${isEdit} ? 'Editar' : 'Adicionar'"></a>
+        <a th:href=@{/clientes/novatos} class="botao inativo">Ver Novatos</a>
+        <div class="info">
+            <div>
+                <form th:object="${cliente}" method="POST"
+                    th:action="@{${isEdit}? '/clientes/editar/{id}' : '/clientes/adicionar' (id=${cliente.id})}"
+                    class="formulario">
+                    <label for="Nome">* Nome Completo: </label>
+                    <input type="text" name="Nome" id="Nome" placeholder="Seu nome completo" th:field=*{nome}
+                        required><br>
+                    <label for="Nascimento">* Data de Nascimento: </label>
+                    <input type="date" name="Nascimento" id="Nascimento" th:field=*{dataNascimento} required><br>
+                    <label for="Email">* E-mail: </label>
+                    <input type="email" name="Email" id="Email" placeholder="exemplo@exemplo.com" th:field=*{email}
+                        required><br>
+                    <label for="telefone">* Telefone</label>
+                    <input type="tel" name="telefone" id="telefone"
+                        pattern="(\([0-9]{2}\)[0-9]{4}\-[0-9]{5})|([0-9]{2}[0-9]{4}[0-9]{5})" title="Exemplo de telefone:
+                                            (84)99999-9999 ou 84999999999" placeholder="(84)99999-9999 ou 84999999999"
+                        th:field="*{telefone}" required><br>
+                    <label for="CEP">* CEP: </label>
+                    <input type="text" name="CEP" id="cep" maxlength="9" placeholder="Seu CEP" th:field=*{CEP}
+                        required><br>
+                    <label for="estados-brasil">* Escolha seu estado: </label>
+                    <select id="uf" th:field="*{estado}">
+                        <!--Vlw Cassio Cardoso! https://gist.github.com/cassiocardoso/8966749 -->
+                        <option th:value="AC">Acre</option>
+                        <option th:value="AL">Alagoas</option>
+                        <option th:value="AP">Amapá</option>
+                        <option th:value="AM">Amazonas</option>
+                        <option th:value="BA">Bahia</option>
+                        <option th:value="CE">Ceará</option>
+                        <option th:value="DF">Distrito Federal</option>
+                        <option th:value="ES">Espírito Santo</option>
+                        <option th:value="GO">Goiás</option>
+                        <option th:value="MA">Maranhão</option>
+                        <option th:value="MT">Mato Grosso</option>
+                        <option th:value="MS">Mato Grosso do Sul</option>
+                        <option th:value="MG">Minas Gerais</option>
+                        <option th:value="PA">Pará</option>
+                        <option th:value="PB">Paraíba</option>
+                        <option th:value="PR">Paraná</option>
+                        <option th:value="PE">Pernambuco</option>
+                        <option th:value="PI">Piauí</option>
+                        <option th:value="RJ">Rio de Janeiro</option>
+                        <option th:value="RN">Rio Grande do Norte</option>
+                        <option th:value="RS">Rio Grande do Sul</option>
+                        <option th:value="RO">Rondônia</option>
+                        <option th:value="RR">Roraima</option>
+                        <option th:value="SC">Santa Catarina</option>
+                        <option th:value="SP">São Paulo</option>
+                        <option th:value="SE">Sergipe</option>
+                        <option th:value="TO">Tocantins</option>
+                    </select><br>
+                    <label for="Cidade">* Cidade: </label>
+                    <input type="text" name="Cidade" id="cidade" placeholder="Sua cidade" th:field=*{cidade}
+                        required><br>
+                    <label for="Bairro">* Bairro: </label>
+                    <input type="text" name="Bairro" id="bairro" placeholder="Seu bairro" th:field=*{bairro}
+                        required><br>
+                    <label for="Endereco">* Endereço: </label>
+                    <input type="text" name="Endereco" id="endereco" placeholder="Seu endereco" th:field=*{endereco}
+                        required><br>
+                    <p style="font-size: 2.5vh; margin: 0vh;">* Sexo:</p>
+                    <input type="radio" name="Sexo" id="Masculino" value="Masculino" th:field=*{genero} required>
+                    <label for="Masculino">Masculino</label><br>
+                    <input type="radio" name="Sexo" id="Feminino" value="Feminino" th:field=*{genero} required>
+                    <label for="Feminino">Feminino</label><br>
+                    <input type="radio" name="Sexo" id="Não informar" value="Não informar" th:field=*{genero} required>
+                    <label for="Não informar">Não informar</label><br>
+                    <input type="hidden" name="" th:field="*{dataCadastro}">
+                    <input type="submit" value="Enviar" class="botao">
+                    <input type="reset" value="Limpar" class="botao">
+                </form>
+                <p>* obrigatório</p>
+            </div>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>

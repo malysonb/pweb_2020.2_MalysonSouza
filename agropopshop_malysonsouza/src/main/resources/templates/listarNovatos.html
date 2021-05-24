@@ -27,53 +27,42 @@
         <li><a href="/public/contato.html">Mande um e-mail</a></li>
     </ul>
     <div class="conteudo">
-        <h1>Clientes Cadastrados:</h1>
-        <a th:href=@{/clientes} class="botao">Listar Clientes</a>
+        <h1>Clientes Novatos:</h1>
+        <a th:href=@{/clientes} class="botao inativo">Listar Clientes</a>
         <a th:href=@{/clientes/adicionar} class="botao inativo">Adicionar</a>
-        <a th:href=@{/clientes/novatos} class="botao inativo">Ver Novatos</a>
+        <a th:href=@{/clientes/novatos} class="botao">Ver Novatos</a>
         <div class="info">
             <div>
+                <form th:action="@{/clientes/novatos/}" id="form" method="POST">
+                    <label for="Mes">Exibindo do mês: </label>
+                    <input type="month" name="Mes" required th:value="${dataStr}" oninput="setAction(this.value)"
+                        id="Mes" th:max="${#dates.format(#dates.createNow(), 'yyyy-MM')}"><br>
+                    <input type="submit" value="Pesquisar">
+                </form>
+                <hr>
                 <table style="width: 100%;">
                     <tr>
                         <th>ID</th>
                         <th>Nome Completo</th>
                         <th>Data de nascimento</th>
-                        <th>E-Mail</th>
-                        <th>Sexo</th>
-                        <th>UF</th>
-                        <th>Endereço</th>
-                        <th>Telefone</th>
-                        <th>Editar</th>
-                        <th>Dependente</th>
-                        <th>Remover</th>
+                        <th>Data do Cadastro</th>
                     </tr>
                     <tr th:each="cliente: ${clientes}">
                         <td th:text=${cliente.id}></td>
                         <td th:text=${cliente.nome}></td>
                         <td th:text="${#temporals.format(cliente.dataNascimento,'dd-MM-yyyy')}"></td>
-                        <td>
-                            <a th:href="'mailto:' + ${cliente.email}" th:text="${cliente.email}"></a>
-                        </td>
-                        <td th:text=${cliente.genero}></td>
-                        <td th:text="${cliente.estado}"></td>
-                        <td
-                            th:text="${cliente.endereco} + ' - ' + ${cliente.bairro} + ', ' + ${cliente.cidade} + ' - ' + ${cliente.CEP}">
-                        </td>
-                        <td th:text="${cliente.telefone}"></td>
-                        <td>
-                            <a th:href="@{/clientes/editar/{id}(id=${cliente.id})}">Editar</a>
-                        </td>
-                        <td>
-                            <a th:href="@{/dependentes/{id}(id=${cliente.id})}">Ver</a>
-                        </td>
-                        <td>
-                            <a th:href="@{/clientes/remover/{id}(id=${cliente.id})}">Remover</a>
-                        </td>
+                        <td th:text="${#temporals.format(cliente.dataCadastro,'dd-MM-yyyy')}"></td>
                     </tr>
                 </table>
             </div>
         </div>
     </div>
+    <script>
+        var form = document.getElementById("form");
+        function setAction(value) {
+            form.setAttribute("action", "/clientes/novatos/" + value);
+        }
+    </script>
 </body>
 
 </html>
